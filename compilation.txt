@@ -1,0 +1,1 @@
+g++ -o app -Wall -O2 -std=c++17 -s -DNDEBUG -march=native SSgen_v2.cpp -L\libgcc_s_seh-1 -L\libstdc++-6 -L\libwinpthread-1

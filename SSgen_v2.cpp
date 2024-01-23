@@ -21,7 +21,6 @@ std::string valueFreqVBW [] = {"2000.000000", "100000.000000", "1000000.000000",
 std::string freqStart = "", freqStop = "", freqSpan = "", valueRBW = "", valueVBW = "";
 
 int valuePoint = 0, numPoint = 0, numTrace = 0;
-// long long firstWLong = 0;
 std::string sep = "";
 fs::path fileNew;
 
@@ -135,7 +134,7 @@ bool validNum (std::string inTxt) {
     bool res = (inTxt.empty()) ? false: true;  
     int point = 0;  
     
-    for(int i = 0; i < inTxt.length(); i++){  
+    for(int i = 0; i < (int)inTxt.length(); i++){  
         if(i == 0 && inTxt[i] == '-'){
             res &= true;
             continue;
@@ -218,13 +217,13 @@ std::string textEdit (std::string inTxt) {
                                         
         // Обработка значений вида 10e-06 
         if (secondWord.find("e-") != std::string::npos) {
-            int indF = secondWord.find("e-"), i = 0;
+            int indF = secondWord.find("e-"), iter = 0;
             std::string swOne = secondWord.substr(0, indF), tmpTxt = "";
             int swPow = std::stoi(secondWord.substr(indF + 2, 2)) - 1;
 
             if (swOne[0] == '-') {
                     tmpTxt.push_back('-');
-                    i++;
+                    iter++;
             }
             tmpTxt.append("0.");
 
@@ -232,10 +231,12 @@ std::string textEdit (std::string inTxt) {
                 tmpTxt.push_back('0');
             }
             
-            for(i; i < swOne.size(); i++) {
-                if (swOne[i] != '.') {
-                    tmpTxt.push_back(swOne[i]);
-                }            
+            while (iter < (int)swOne.size()) {
+                if (swOne[iter] != '.') {
+                    tmpTxt.push_back(swOne[iter]);
+                } 
+                    
+                iter++;       
             }                        
             secondWord = tmpTxt;            
         }

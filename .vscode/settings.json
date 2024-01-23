@@ -54,7 +54,8 @@
         "main_14-7": "cpp",
         "cstring": "cpp",
         "fstream": "cpp",
-        "ratio": "cpp"
+        "ratio": "cpp",
+        "filesystem": "cpp"
     },
     "files.encoding": "utf8",
     "terminal.integrated.detectLocale": "on"
