@@ -83,8 +83,8 @@ int main (int argc, char* argv[]) {
                                 system("pause");
                                 return -1;
                             }
-                                                        
-                            fileResult << text  + '\n';          // Обработка строки
+                            text = (text == "") ?  text : text  + '\n';                           
+                            fileResult << text;          // Обработка строки
                         }                        
                         fileSourse.close();
                         fileResult.close();                                            
